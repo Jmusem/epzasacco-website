@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    
+
+    /* GENERAL STYLES */
+body {
+  background-color: #2e2e2e;
+  color: white;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(46, 46, 46, 0.85);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+  transition: background 0.3s, transform 0.3s, opacity 0.3s ease-in-out;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+#backToTop:hover {
+  background: #007bff;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+
+
+
+.blog-section {
+  background-color: #f8f9fa;
+}
+
+.blog-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.blog-card h5 {
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.blog-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.download-app-btn {
+  background-color: maroon;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.download-app-btn:hover {
+  background-color: blue;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+  .blog-card h5 {
+    font-size: 1.1rem;
+  }
+
+  .blog-card p {
+    font-size: 0.9rem;
+  }
+}
+
+.stats-section {
+  background-color: #f2f2f2;
+}
+
+.stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .stat-card h2 {
+    font-size: 2rem;
+  }
+
+  .stat-card p {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* NAVIGATION BAR */
+.navbar {
+  background-color: rgba(46, 46, 46, 0.6); /* Semi-transparent dark */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional subtle border */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 5%;
+  position: fixed; /* Ensure it stays at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Keep it above other elements */
+}
+
+
+.navbar .nav-link,
+.navbar .navbar-brand,
+.navbar .dropdown-toggle {
+  color: white !important;
+  transition: color 0.3s;
+  padding: 8px 15px;
+  nav hover {
+    color: skyblue !important; /* Change to your desired hover color */
+  }
+}
+
+
+.navbar-toggler {
+  background-color: #444;
+}
+
+/* DROPDOWN HOVER EFFECTS */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.dropdown-menu {
+  background-color: white;
+  border: none;
+}
+
+.dropdown-item {
+  color: #000;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: navy;
+}
+
+/* HERO SECTION */
+
+#heroSection {
+  position: relative;
+  min-height: 550px;
+  background-image: var(--hero-background);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  overflow: hidden;
+}
+
+/* Background fade/dim overlay */
+#heroSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2); /* Darkness overlay for background fade */
+      /* Optional: adds soft blur to background */
+  z-index: 1;
+}
+
+
+
+
+
+
+#homeContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.hero-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.hero-subtext {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #f1f1f1;
+}
+
+.hero-button {
+  padding: 10px 25px;
+  background-color: maroon;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.hero-button:hover {
+  background-color: #0056b3;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 992px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+
+  .hero-subtext {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .nav-link {
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  #heroSection {
+    padding: 40px 20px;
+    min-height: 400px;
+  }
+
+  .hero-heading {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtext {
+    font-size: 0.9rem;
+  }
+
+  .hero-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.frosted-nav {
+  background-color: rgba(46, 46, 46, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #ffd700;
+}
+
+
+/* CARDS & ANIMATIONS */
+.card {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-40px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* INFO SECTION */
+.info-card .top-part {
+  font-size: 2rem;
+  color: grey;
+}
+
+.info-card .title {
+  font-weight: bold;
+  color: black;
+  font-size: 0.9rem;
+}
+
+.info-card .separator {
+  height: 2px;
+  background-color: grey;
+  margin: 10px 0;
+}
+
+.info-card .content {
+  font-size: 0.9rem;
+  color: grey;
+}
+
+/* GET IN TOUCH SECTION */
+.get-in-touch-section {
+  background-color: #f0f0f0;
+  padding: 60px 0;
+  color: #000;
+  text-align: center;
+}
+
+.get-in-touch-section h2 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.get-in-touch-section .lead-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.contact-btn {
+  background-color: maroon;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #0d6efd;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: rgba(46, 46, 46, 0.8); /* matches your navbar color with transparency */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(6px); /* frosted effect */
+}
+
+#backToTop:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+
+/* HOVER SECTION */
+#coreValuesHoverSection {
+  background-color: #2e2e2e;
+  color: white;
+  padding: 50px 0;
+  display: none;
+}
+
+/* BENEFITS SECTION */
+.benefit-icon {
+  font-size: 2rem;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+.step-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.step {
+  max-width: 250px;
+}
+
+.step-icon {
+  font-size: 3rem;
+  color: #0d6efd;
+}
+
+/* Line between steps */
+.line-between {
+  width: 60px;
+  height: 2px;
+  background-color: #ccc;
+  align-self: center;
+}
+
+/* Text formatting */
+.step-text {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Responsive stacking */
+@media (max-width: 768px) {
+  .step-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .line-between {
+    width: 2px;
+    height: 40px;
+  }
+}
+
+
+.benefit-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.benefit-text {
+  color: grey;
+  font-size: 0.95rem;
+}
+
+/* BLUE LINES */
+.blue-line-short {
+  width: 60px;
+  height: 5px;
+  background-color: #0d6efd;
+  margin-bottom: 1rem;
+}
+
+.blue-line {
+  height: 8px;
+  background-color: #0d6efd;
+  margin-bottom: 1rem;
+}
+
+/* PORTAL BUTTON */
+.portal-btn {
+  background-color: maroon;
+  color: white !important;
+  padding: 6px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.portal-btn:hover {
+  background-color: navy;
+  color: white !important;
+}
+
+/* FOOTER */
+footer {
+  background-color: white;
+  color: black;
+  border-top: 1px solid #e0e0e0;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* DYNAMIC CONTENT SECTIONS */
+.dynamic-content {
+  display: none;
+}
+
+.dynamic-content.active {
+  display: block;
+}
+
+/* ABOUT SECTION GREY BACKGROUND */
+.about-grey-bg {
+  background-color: #2e2e2e;
+  color: white;
+  padding: 50px 0;
+  min-height: 450px;
+}
+
+/* ANIMATION EFFECT */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.fade-in.show {
+  opacity: 1;
+}
+
+  </style>
+</head>
+<body>
+ 
+
+
+  <nav class="navbar navbar-expand-lg fixed-top frosted-nav">
+  <div class="container-fluid px-3">
+    <!-- Brand or Logo -->
+    
+
+    <!-- Hamburger toggle -->
+    <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#epzaNavbar" aria-controls="epzaNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Items -->
+    <div class="collapse navbar-collapse" id="epzaNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#" id="homeLink" onclick="showSection('homeSection')">Home</a>
+        </li>
+
+        <!-- About Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="aboutLink" role="button" data-bs-toggle="dropdown">About</a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="#" onclick="showSection('aboutSection')">Core Values</a></li>
+            <li><a class="dropdown-item" href="#" id="boardOfDirectorsLink" onclick="showSection('boardOfDirectorsSection')">Board of Directors</a></li>
+            <li><a class="dropdown-item" href="#" id="supervisoryCommitteeLink" onclick="showSection('supervisoryCommitteeSection')">Supervisory Committee</a></li>
+            <li><a class="dropdown-item" href="#" id="creditCommitteeLink" onclick="showSection('creditCommitteeSection')">Credit Committee</a></li>
+            <li><a class="dropdown-item" href="#" id="educationCommitteeLink" onclick="showSection('educationCommitteeSection')">Education Committee</a></li>
+            <li><a class="dropdown-item" href="#" id="staffLink" onclick="showSection('staffSection')">Staff</a></li>
+          </ul>
+        </li>
+
+        <!-- Services -->
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#" id="servicesLink" onclick="showSection('servicesSection')">Services</a>
+        </li>
+      </ul>
+
+      <!-- Right Side -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#" id="mediaLink" onclick="showSection('mediaSection')">Media</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#" id="contactLink" onclick="showSection('contactSection')">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="https://memberportal.cft.co.ke" target="_blank">Portal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="assets/app-debug.apk" download>Download App</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<!-- Home Section (Updated with Section ID) -->
+<section id="homeSection" class="dynamic-content" style="display: none;">
+  
+  <!-- Hero Section -->
+  <section class="container-fluid py-5 position-relative" id="heroSection">
+    <div class="container text-white" style="padding: 80px;">
+      <div id="homeContent" class="fade-in show" style="padding: 80px;">
+        <!-- Dynamic content goes here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Management Section -->
+ 
+  <section class="container-fluid py-5 bg-white text-black">
+  <div class="container">
+
+   <!-- Download App Introduction + Button -->
+<div class="text-center mb-5">
+  
+  <a href="assets/app-debug.apk" download class="download-app-btn">
+    Download Our App
+  </a>
+</div>
+
+<align="center">
+    <!-- Existing Content -->
+    <h2 class="fw-bold mb-4 fs-2" style="font-size: 48px;">Management of EPZA SACCO Ltd</h2>
+    <p class="fs-6" style="max-width: 800px; font-size: larger;">
+      EPZA SACCO is managed through committees elected by members at the Annual Delegates Meeting and full-time SACCO staff.
+      <br><br>
+      Key committees:
+      <br> 1) Central Management Committee
+      <br> 2) Supervisory Committee
+    </p>
+  </div>
+</align>
+</section>
+
+
+  <!-- Services Section -->
+  <section class="container-fluid py-5 bg-white text-black">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <!-- Left Column -->
+        <div class="col-lg-4">
+          <h3 class="fw-bold mb-3 fs-4" style="font-size: larger;">Some of the Services We Offer</h3>
+          <p style="font-size: larger;">
+            We offer savings and loans to members including development, emergency, and school fees loans.
+          </p>
+          <a href="#" id="viewMoreBtn" class="btn btn-danger" style="padding: 10px 20px;">View More</a>
+
+        </div>
+
+        <!-- Center Card -->
+        <div class="col-lg-4">
+          <div class="card h-100 shadow-sm"  style="min-height: 450px;">
+            <div class="card-body">
+              <br><br>
+              <h4 class="card-title fw-bold mb-3 fs-5">Save Regularly</h4>
+              <p style="font-size: larger;">Our Members are advised to opt to the principle of saving regulary </p>
+              <ul>
+                <li style="font-size: larger;">Save monthly via employer check-off.</li>
+                <li style="font-size: larger;">Contribute at least Ksh 1000 monthly.</li>
+                <li style="font-size: larger;">Purchase nominal share capital of Ksh 7000 (spread over 10 months).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Card -->
+        <div class="col-lg-4">
+          <div class="card h-100 shadow-sm"  style="min-height: 450px;">
+            <div class="card-body">
+              <br><br>
+              <h4 class="card-title fw-bold mb-3 fs-5">Borrow Wisely</h4>
+              <p style="font-size: larger;">In order to access any of the sacco's products a member must satisfy the following conditions</p>
+              <ul>
+                <li style="font-size: larger;">Save for at least 6 months.</li>
+                <li style="font-size: larger;">Total deductions ≤ 2/3 of gross salary.</li>
+                <li style="font-size: larger;">Loans must be guaranteed by other members’ deposits.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Become a Member -->
+
+  <!-- Font Awesome for better icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<section class="container-fluid py-5 bg-white text-black">
+  <div class="container text-center">
+    <p class="text-muted fs-6">How to become a member</p>
+    <h2 class="fw-bold mb-5 fs-2">A Simple Process</h2>
+
+    <div class="d-flex justify-content-center align-items-start flex-wrap gap-4 step-container">
+      <!-- Step 1 -->
+      <div class="text-center step">
+        <div class="step-icon">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        <h5 class="fw-bold mt-3">Join the SACCO</h5>
+        <p class="step-text">
+          Download and fill the application form. Submit it at EPZA SACCO offices.
+        </p>
+      </div>
+
+      <!-- Connecting Line -->
+      <div class="line-between"></div>
+
+      <!-- Step 2 -->
+      <div class="text-center step">
+        <div class="step-icon">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <h5 class="fw-bold mt-3">Sign a Commitment</h5>
+        <p class="step-text">
+          Commit to monthly savings via check-off system.
+        </p>
+      </div>
+
+      <!-- Connecting Line -->
+      <div class="line-between"></div>
+
+      <!-- Step 3 -->
+      <div class="text-center step">
+        <div class="step-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h5 class="fw-bold mt-3">Grow with Us</h5>
+        <p class="step-text">
+          Begin saving and watch your investments grow.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Stats Section -->
+<!-- Stats Section -->
+<section class="stats-section py-5">
+  <div class="container text-center">
+    <h2 class="fs-2 mb-5 fw-bold">We Let Our Stats Do the Talking</h2>
+    <div class="row g-4">
+      <!-- Stat Card 1 -->
+      <div class="col-md-4">
+        <div class="stat-card bg-white rounded shadow text-center p-4 h-100">
+          <h5 class="text-muted">Experience</h5>
+          <h2 class="fw-bold text-primary">27 Years</h2>
+          <p class="text-secondary">of successful investing</p>
+        </div>
+      </div>
+
+      <!-- Stat Card 2 -->
+      <div class="col-md-4">
+        <div class="stat-card bg-white rounded shadow text-center p-4 h-100">
+          <h5 class="text-muted">Members</h5>
+          <h2 class="fw-bold text-primary">2,500+</h2>
+          <p class="text-secondary">EPZA SACCO Members</p>
+        </div>
+      </div>
+
+      <!-- Stat Card 3 -->
+      <div class="col-md-4">
+        <div class="stat-card bg-white rounded shadow text-center p-4 h-100">
+          <h5 class="text-muted">Loan Products</h5>
+          <h2 class="fw-bold text-primary">8</h2>
+          <p class="text-secondary">Different options</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Blog Section -->
+
+  <!-- Get in Touch -->
+  <section class="position-relative bg-white">
+    <div style="height: 450px; overflow: hidden;">
+      <iframe 
+        src="https://www.google.com/maps/embed?...your-url-here..." 
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+
+    <div class="container" style="margin-top: -100px; z-index: 10; position: relative;">
+      <div class="bg-white p-5 rounded shadow-lg mx-auto" style="max-width: 800px;">
+        <h4 class="text-center fw-bold mb-2">Get in Touch with us</h4>
+        <p class="text-center text-muted mb-4">Don't be shy. Reach out and let us guide you.</p>
+
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="col-12">
+              <input type="text" class="form-control" placeholder="Subject">
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" rows="3" placeholder="Message"></textarea>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-primary mt-2 px-4">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+   <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</section>
+
+
+
+
+
+
+<!-- About Section (with section ID) -->
+<section id="aboutSection" class="dynamic-content" style="display: none; min-height: 550px;">
+
+  <!-- Grey Background Section -->
+  <section class="about-grey-bg " style="min-height: 550px;">
+    <div class="container text-center">
+      <h5 class="fw-bold" style="font-size: 2.5rem; padding:60px;">Background</h5>
+     <div class="d-flex justify-content-center">
+  <p class="mt-3 text-center" style="max-width: 800px; font-size: 1.2rem;">
+    EPZA SACCO Ltd stands for EPZA Savings and Credit Cooperative Society Limited and was started in 1995.
+    The key objective of the SACCO is to mobilize savings from members and advance credit to members from their savings.
+  </p>
+</div>
+
+  </section>
+
+  <!-- About EPZA SACCO Section -->
+  <section class="bg-white py-5 text-dark">
+    <div class="container">
+
+      <h4 class="fw-bold text-center mb-4 " style="font-size: 2.5rem;">About EPZA SACCO</h4>
+      <p style="max-width: 900px; margin: auto;" style="font-size: 1.2rem;">
+        EPZA SACCO is formed by members who are employees from Export Processing Zones Authority (EPZA) and constituent EPZA Enterprises within the country.
+        Currently EPZA SACCO has a membership of about 2500. Members who exit from the EPZ fraternity may remain members of EPZA SACCO,
+        if they wish so, after making special arrangements with the Central Management Committee.
+      </p>
+    </div>
+  </align>
+  </section>
+
+  
+<!-- Core Values and Membership Info -->
+<section class="bg-light py-5 text-dark">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      
+      <!-- Core Values -->
+      <div class="col-lg-6">
+        <h4 class="fw-bold text-primary">Our Core Values</h4>
+        <div class="blue-line-short mb-3"></div>
+        <ul class="list-unstyled fs-6 ps-3">
+          <li class="mb-2">✔ Customer Focus</li>
+          <li class="mb-2">✔ Integrity</li>
+          <li class="mb-2">✔ Teamwork</li>
+          <li class="mb-2">✔ Creativity & Innovation</li>
+          <li class="mb-2">✔ Equality & Fairness</li>
+        </ul>
+
+        <div class="mt-4">
+          <p class="fw-bold">SAVE REGULARLY, BORROW WISELY</p>
+          <div class="blue-line mb-3" style="width: 80%;"></div>
+
+          <p class="fw-bold">BUY PRODUCTS THROUGH THE SACCO</p>
+          <div class="blue-line mb-3" style="width: 70%;"></div>
+
+          <p class="fw-bold">DEVELOPMENT LOANS</p>
+          <div class="blue-line mb-3" style="width: 85%;"></div>
+
+          <p class="fw-bold">EMERGENCY LOANS</p>
+          <div class="blue-line" style="width: 90%;"></div>
+        </div>
+      </div>
+
+      <!-- Membership Info -->
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-lg">
+          <div class="card-body " style="min-height: 350px;">
+            <h5 class="fw-bold text-primary">How to Become a Member</h5>
+            <div class="blue-line-short mb-3"></div>
+            <p>To join, fill out a membership form and submit it to the EPZA SACCO office along with the following:</p>
+            <ul class="ps-3">
+              <li> Copy of National ID</li>
+              <li> Two passport size photos</li>
+              <li>KRA PIN Certificate</li>
+              <li> Ksh 500 one-time registration fee</li>
+              <li> Minimum Ksh 1000 monthly savings via check-off</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Mission, Vision, Objective -->
+<section class="py-5 bg-white">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-md-4">
+        <div class="card info-card p-4 shadow-sm border-0 h-100">
+          <div class="top-part text-primary fs-4">01.</div>
+          <div class="title text-dark fs-5 fw-bold">Key Objective</div>
+          <div class="separator"></div>
+          <div class="content">Mobilize savings and offer credit to members from their savings.</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card info-card p-4 shadow-sm border-0 h-100">
+          <div class="top-part text-primary fs-4">02.</div>
+          <div class="title text-dark fs-5 fw-bold">Mission</div>
+          <div class="separator"></div>
+          <div class="content">Enhance members' socio-economic status through quality financial services.</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card info-card p-4 shadow-sm border-0 h-100">
+          <div class="top-part text-primary fs-4">03.</div>
+          <div class="title text-dark fs-5 fw-bold">Vision</div>
+          <div class="separator"></div>
+          <div class="content">To be the preferred financial solutions provider.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h4 class="text-center fw-bold mb-5 text-primary">Why Choose EPZA SACCO?</h4>
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="benefit-icon fs-1 text-primary"><i class="bi bi-bar-chart-line"></i></div>
+        <h5 class="fw-bold" style="color: black; font-style: bold;">Consistent Growth</h5>
+        <p class="benefit-text">Members save at least Ksh 1000 monthly.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="benefit-icon fs-1 text-primary"><i class="bi bi-wallet2"></i></div>
+        <h5 class="fw-bold" style="color: black; font-style: bold;">Low Entry Fee</h5>
+        <p class="benefit-text">Just Ksh 500 to register.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="benefit-icon fs-1 text-primary"><i class="bi bi-box-arrow-right"></i></div>
+        <h5 class="fw-bold" style="color: black; font-style: bold;">Easy Exit</h5>
+        <p class="benefit-text">Exit smoothly with help from the management committee.</p>
+      </div>
+    </div>
+
+    <div class="row text-center g-4 mt-4">
+      <div class="col-md-4">
+        <div class="benefit-icon fs-1 text-primary"><i class="bi bi-shield-lock"></i></div>
+        <h5 class="fw-bold"  style="color: black; font-style: bold;">Secure Borrowing</h5>
+        <p class="benefit-text">Loans are backed by member deposits.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="benefit-icon fs-1 text-primary"><i class="bi bi-percent"></i></div>
+        <h5 class="fw-bold" style="font-style: bold; color: black;">Low Interest</h5>
+        <p class="benefit-text">1% monthly on reducing balance.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="benefit-icon fs-1 text-primary"><i class="bi bi-graph-up-arrow"></i></div>
+        <h5 class="fw-bold" style="color: black; font-style: bold;">High Loan Limit</h5>
+        <p class="benefit-text">Get up to 3× your deposits, repayable in 48 months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+   <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</section>
+
+
+<!-- Board of Directors Section (with section ID) -->
+<section id="boardOfDirectorsSection" class="dynamic-content" style="display: none;">
+
+  <!-- Grey Background Section -->
+  <section class="about-grey-bg">
+    <div class="container text-center">
+      <h1 class="fw-bold mb-4" style="font-size: 2.5rem;padding: 60px;">Board of Directors</h1>
+      <div class="container text-center">
+        <p class="mt-3" style="max-width: 800px; font-size: 1.2rem; justify-content: center; margin: auto;">
+          The Board of Directors is elected by the members of the SACCO and is responsible for the overall governance and strategic direction of the SACCO.
+        </p>
+                    </div>
+     
+    </div>
+  </section>
+
+  <!-- Directors Section -->
+  <section class="bg-white py-5 text-dark">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <!-- Director 1 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Fridah.png" class="card-img-top rounded-circle mx-auto" alt="Fridah Karithi" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Fridah Karithi</h5>
+              <p class="card-text text-muted">Supervisory Committee</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Director 2 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Naftal.png" class="card-img-top rounded-circle mx-auto" alt="Naftal Bichanga" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Naftal Bichanga</h5>
+              <p class="card-text text-muted">Vice Chairperson</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Director 3 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Jonathan.jpg" class="card-img-top rounded-circle mx-auto" alt="Jonathan Kaunda Kivata" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Jonathan Kaunda Kivata</h5>
+              <p class="card-text text-muted">Secretary</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Director 4 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Edwin.png" class="card-img-top rounded-circle mx-auto" alt="Edwin Kyalo" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Edwin Kyalo</h5>
+              <p class="card-text text-muted">Treasurer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Director 5 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/John.png" class="card-img-top rounded-circle mx-auto" alt="John Maina" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">John Maina</h5>
+              <p class="card-text text-muted">Education Committee</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Director 6 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Felix.jpg" class="card-img-top rounded-circle mx-auto" alt="Felix Siko" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Felix Siko</h5>
+              <p class="card-text text-muted">Education Committee</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Director 7 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Okello.png" class="card-img-top rounded-circle mx-auto" alt="Okello Josephat" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Okello Josephat</h5>
+              <p class="card-text text-muted">Credit Committee Chairperson</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Director 8 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Moses.png" class="card-img-top rounded-circle mx-auto" alt="Moses Obongo" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Moses Obongo</h5>
+              <p class="card-text text-muted">Credit Committee</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</section>
+
+<!-- Supervisory Committee Content Section -->
+<section id="supervisoryCommitteeSection" class="dynamic-content" style="display: none; justify-content: center;">
+
+  <!-- Grey Background Section -->
+  <section class="about-grey-bg">
+    <div class="container text-center">
+      <h1 class="fw-bold mb-4" style="font-size: 2.5rem; text-align: center;padding: 60px;">Supervisory Committee</h1>
+      <p class="mt-3" style="max-width: 800px; font-size: 1.1rem; text-align: center; align-items: center; justify-content: center; margin: auto;">
+        The Supervisory Committee members are elected during the Annual Delegates Meeting (ADM) and are responsible for overseeing the operations of the SACCO.
+      </p>
+    </div>
+  </section>
+
+  <!-- Committee Member Cards -->
+  <section class="bg-white py-5 text-dark">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <!-- Member 1 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Fridah.png" class="card-img-top rounded-circle mx-auto" alt="Fridah Karithi" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Fridah Karithi</h5>
+              <p class="card-text text-muted">Supervisory Committee</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</section>
+
+<!-- Credit Committee Content Section -->
+<section id="creditCommitteeSection" class="dynamic-content" style="display: none; justify-content: center;">
+
+  <!-- Grey Background Header -->
+  <section class="about-grey-bg py-5">
+    <div class="container text-center">
+      <h1 class="fw-bold mb-4" style="font-size: 2.5rem; padding: 60px;">Credit Committee</h1>
+    </div>
+  </section>
+
+  <!-- Committee Members -->
+  <section class="bg-white py-5 text-dark">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Member 1 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Okello.png" class="card-img-top rounded-circle mx-auto" alt="Okello Josephat" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Okello Josephat</h5>
+              <p class="card-text text-muted">Credit Committee Chairperson</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Moses.png" class="card-img-top rounded-circle mx-auto" alt="Moses Obongo" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Moses Obongo</h5>
+              <p class="card-text text-muted">Credit Committee</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</section>
+
+
+<!-- Education Committee Content Section -->
+<section id="educationCommitteeSection" class="dynamic-content" style="display: none;">
+
+  <!-- Grey Background Section -->
+  <section class="about-grey-bg">
+    <div class="container text-center">
+      <h1 class="fw-bold mb-4" style="font-size: 2.5rem; padding: 60px;">Education Committee</h1>
+      <p class="mt-3" style="max-width: 800px; font-size: 1.1rem; justify-content: center; margin: auto;">
+        The Education Committee is responsible for promoting financial literacy and providing educational resources to members.
+      </p>
+    </div>
+  </section>
+
+  <!-- Committee Members Section -->
+  <section class="bg-white py-5 text-dark">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Member 1 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/John.png" class="card-img-top rounded-circle mx-auto" alt="John Maina" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">John Maina</h5>
+              <p class="card-text text-muted">Education Committee</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Felix.jpg" class="card-img-top rounded-circle mx-auto" alt="Felix Siko" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Felix Siko</h5>
+              <p class="card-text text-muted">Education Committee</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</section>
+
+<!-- Staff Content Section -->
+<section id="staffSection" class="dynamic-content">
+
+  <!-- Grey Background Section -->
+  <section class="about-grey-bg">
+    <div class="container text-center">
+      <h1 class="fw-bold mb-4" style="font-size: 2.5rem; padding: 60px;">Staff</h1>
+      <p class="mt-3" style="max-width: 800px; font-size: 1.1rem; justify-content: center; margin: auto;">
+        Our dedicated staff members work tirelessly to ensure the smooth operation of the SACCO and to provide the best possible service to our members.
+      </p>
+    </div>
+  </section>
+
+  <!-- Staff Members Section -->
+  <section class="bg-white py-5 text-dark">
+    <div class="container">
+      <div class="row g-4 mb-5">
+
+        <!-- Staff 1 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Fridah.png" class="card-img-top rounded-circle mx-auto" alt="Fridah Karithi" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Fridah Karithi</h5>
+              <p class="card-text text-muted">Supervisory Committee</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Staff 2 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Naftal.png" class="card-img-top rounded-circle mx-auto" alt="Naftal Bichanga" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Naftal Bichanga</h5>
+              <p class="card-text text-muted">Vice Chairperson</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Staff 3 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Jonathan.jpg" class="card-img-top rounded-circle mx-auto" alt="Jonathan Kaunda Kivata" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Jonathan Kaunda Kivata</h5>
+              <p class="card-text text-muted">Secretary</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Staff 4 -->
+        <div class="col-md-3">
+          <div class="card border-0 text-center">
+            <img src="assets/Edwin.png" class="card-img-top rounded-circle mx-auto" alt="Edwin Kyalo" style="width: 200px; height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Edwin Kyalo</h5>
+              <p class="card-text text-muted">Treasurer</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </section>
+
+
+</section>
+
+
+<section id="mediaSection" class="dynamic-content" style="display: none;">
+  <!-- Dark Grey Header Section -->
+  <div style="background-color: #2e2e2e; color: white; padding: 60px 0; min-height: 550px;">
+    <div class="container text-center">
+      <h1 class="fw-bold" style="font-size: 2.5rem; padding: 60px;">OUR GALLERY</h1>
+      <p class="mt-2" style="font-size: 1.1rem;">Click on the image to view it in full</p>
+    </div>
+  </div>
+
+  <!-- White Gallery Section -->
+  <div class="py-5 bg-white text-dark">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Image 1 -->
+        <div class="col-md-3 col-sm-6">
+          <a href="assets/bod.jpeg" target="_blank">
+            <img src="assets/bod.jpeg" alt="Gallery 1" class="img-fluid rounded shadow-sm w-100">
+          </a>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="col-md-3 col-sm-6">
+          <a href="assets/img2.jpeg" target="_blank">
+            <img src="assets/img2.jpeg" alt="Gallery 2" class="img-fluid rounded shadow-sm w-100">
+          </a>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="col-md-3 col-sm-6">
+          <a href="assets/img3.jpeg" target="_blank">
+            <img src="assets/img3.jpeg" alt="Gallery 3" class="img-fluid rounded shadow-sm w-100">
+          </a>
+        </div>
+
+        <!-- Image 4 -->
+        
+      </div>
+    </div>
+  </div>
+  
+<footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
+
+
+</section>
+
+
+<!-- Services Section -->
+<section id="servicesSection" class="dynamic-content">
+
+  <!-- Grey Background Section -->
+  <section class="py-5" style="background-color: #2e2e2e; min-height: 550px; ">
+    <div class="container text-center">
+      <h2 class="fw-bold" style="font-size: 2.5rem; padding: 60px;">Services We Offer</h2>
+      <p class="mt-2" style="font-size: 1.2rem;">Join us and make your money work for you</p>
+    </div>
+  </section>
+
+  <!-- Services Section - White Background -->
+  <section class="py-5 bg-white text-dark">
+    <div class="container">
+      <div class="row g-5">
+
+        <!-- Left Side -->
+        <div class="col-md-6">
+          <h3 class="fw-bold mb-2" style="font-size: 1.75rem;">Development and Emergency Loans</h3>
+          <hr style="height: 4px; width: 80px; background-color: #007bff;">
+
+          <h5 class="fw-bold text-secondary mt-4">DEVELOPMENT LOANS</h5>
+          <p class="text-muted">
+            Members qualify for 3 times of their cash deposits and the maximum repayment period is 48 months.
+          </p>
+
+          <h5 class="fw-bold text-secondary">EMERGENCY LOANS</h5>
+          <p class="text-muted">
+            Emergency loan is awarded based on 1/3 rule and 3 times the net deposits. The maximum repayment period is 12 months.
+          </p>
+        </div>
+
+        <!-- Right Side (Card) -->
+        <div class="col-md-6">
+          <div class="card shadow border-0 p-4" style="min-height: 550px;">
+            <h3 class="fw-bold mb-2">School Fees and Special/Product Loans</h3>
+            <hr style="height: 4px; width: 80px; background-color: #007bff;">
+
+            <h5 class="fw-bold">SCHOOL FEES LOANS</h5>
+            <p class="text-muted">
+              School fees loan is awarded based on 1/3 rule and 3 times the net deposits. The maximum repayment period is 12 months.
+            </p>
+
+            <h5 class="fw-bold">SPECIAL/PRODUCT LOANS</h5>
+            <p class="text-muted">
+              Special/Product loan is a type of loan offered as physical product. It is offered subject to 1/3 rule and is payable within six months at an interest rate of 2% per month.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Second Services Section - White Background -->
+  <section class="py-5 bg-white text-dark">
+    <div class="container">
+      <div class="row g-5">
+
+        <!-- Left Side -->
+        <div class="col-md-6">
+          <h3 class="fw-bold mb-2" style="font-size: 1.75rem;">Top-up Loans and Christmas Fund</h3>
+          <hr style="height: 4px; width: 80px; background-color: #007bff;">
+
+          <h5 class="fw-bold text-secondary">TOP-UP LOANS</h5>
+          <p class="text-muted">
+            This loan product is available to members who have an active loan product and would like to borrow the same product. It is applicable on development, emergency and school fees loan products. The loan amount and repayment period (subject to a maximum of 48 months) depends on the amount required and the total loans owed to the SACCO.
+          </p>
+
+          <h5 class="fw-bold text-secondary">CHRISTMAS FUND</h5>
+          <p class="text-muted">
+            This is a facility to assist SACCO members to save for their Christmas festivities. A member saves any amount of money with the SACCO on monthly basis which is paid back in December just before businesses close for Christmas and New Year Holidays.
+          </p>
+        </div>
+
+        <!-- Right Side (Card) -->
+        <div class="col-md-6">
+          <div class="card shadow border-0 p-4" style="min-height: 550px;">
+            <h3 class="fw-bold mb-2">Asset Finance and Masaa Loan</h3>
+            <hr style="height: 4px; width: 80px; background-color: #007bff;">
+
+            <h5 class="fw-bold">ASSET FINANCE</h5>
+            <p class="text-muted">
+              Members qualify for 4 times of their cash deposits and maximum repayment period is 60 months at 14% interest.
+            </p>
+
+            <h5 class="fw-bold">MASAA LOANS</h5>
+            <p class="text-muted">
+              Masaa loan is applicable to salaried members whose salaries are processed by Export Processing Zones Authority and Constituent EPZ Companies. It is recovered once within a month and limited to net salary pay. Interest is charged on 10%.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Download Forms Section -->
+<section class="py-5 bg-white text-dark">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+      
+      <!-- Card 1: Loan Application Form -->
+      <div class="col-md-4 d-flex">
+        <div class="card shadow border-0 p-4 w-100">
+          <h5 class="fw-bold mb-3">Download Loan Application Form</h5>
+          <a href="#" >Download Here  ></a>
+        </div>
+      </div>
+
+      <!-- Card 2: Special Loan Form -->
+      <div class="col-md-4 d-flex">
+        <div class="card shadow border-0 p-4 w-100">
+          <h5 class="fw-bold mb-3">Download Special Loan Form</h5>
+          <a href="#" >Download Here   ></a>
+        </div>
+      </div>
+
+      <!-- Learn More (Not in a card) -->
+      <div class="col-md-4 d-flex align-items-center justify-content-center text-center">
+        <div>
+          <h5 class="fw-bold mb-3">Need to join the SACCO</h5>
+           <a href="#" id="learnMoreAboutBtn" class="btn btn-outline-primary">Learn More</a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section class="py-5" style="background-color: #f0f0f0;">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Text -->
+      <div class="col-md-8">
+        <h2 class="fw-bold" style="font-size: 2rem;">
+          Can’t find what you are looking for? Let us help you
+        </h2>
+      </div>
+      
+      <!-- Button -->
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <a href="#" class="btn contact-btn px-4 py-2 fw-bold" onclick="showSection('contactSection')">
+  Contact Us
+</a>
+
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
+
+
+
+
+
+<!-- Blog Page Section -->
+
+
+
+
+
+
+
+
+<section id="contactSection" class="dynamic-content" style="display: none;">
+  <!-- Contact content here -->
+
+  <!-- Grey Header -->
+  <section style="background-color: #2e2e2e; color: white; padding: 60px 0; min-height: 550px;">
+    <div class="container text-center">
+      <h1 class="fw-bold mb-3" style="font-size: 2.5rem; padding: 60px;">Get in Touch</h1>
+      <p class="lead">Our support team is ready to serve you. For all inquiries, please email us using the address below.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form & Info Section -->
+  <section class="py-5 bg-white text-dark">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Left Column: Form -->
+
+        <!-- Left Column: Form styled as a card -->
+<div class="col-md-6">
+  <h4 class="fw-bold mb-3">Reach Out to Us</h4>
+  <div class="card shadow-sm border-0 rounded-3">
+    <div class="card-body p-4">
+      <p class="text-muted mb-4">
+        Don’t be shy. Just tell us about yourself and we’ll figure out the best option for you.<br>
+        Don’t like filling up forms? <strong><a href="mailto:epzasacco@gmail.com">epzasacco@gmail.com</a></strong>
+      </p>
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Name *</label>
+          <input type="text" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Subject</label>
+          <input type="text" class="form-control" placeholder="Subject">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Message</label>
+          <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+        </div>
+        <button type="submit" class="btn text-white w-100" style="background-color: skyblue;">SUBMIT</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+        <!-- Right Column: Contact Info -->
+        <div class="col-md-6">
+          <h5 class="fw-bold mb-4">Contact Information</h5>
+          <div class="mb-3">
+            <i class="bi bi-geo-alt-fill me-2"></i> <strong>Visit Us</strong><br>
+            EPZA SACCO, Kitengela, Kenya – 788
+          </div>
+          <div class="mb-3">
+            <i class="bi bi-telephone-fill me-2"></i> <strong>Call Us</strong><br>
+            +254 703424676
+          </div>
+          <div class="mb-3">
+            <i class="bi bi-envelope-fill me-2"></i> <strong>Email Us</strong><br>
+            epzasacco@gmail.com
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Map Embed -->
+  <section>
+    <div class="container-fluid px-0">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.373991285008!2d36.9695247!3d-1.4957815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f79c339a964f3%3A0x3a8b057462a16c90!2sKitengela%2C%20Kenya!5e0!3m2!1sen!2ske!4v1683293109798!5m2!1sen!2ske" 
+        width="100%" 
+        height="350" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+</div>
+
+<footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row gy-4">
+        <!-- Column 1: Copyright & Social -->
+        <div class="col-md-3">
+          <p class="mb-1">&copy; 2022 EPZA SACCO Ltd.</p>
+          <p class="mb-3">All Rights Reserved</p>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+          </div>
+          <p class="text-muted">Powered by Cyfras Technologies</p>
+        </div>
+
+        <!-- Column 2: More Links -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">More Links</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Membership Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Loan Application Form</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Special Loan Application Form</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Policies -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Policies</h6>
+          <ul class="list-unstyled mt-3">
+            <li><a href="#" class="text-dark text-decoration-none">Dividend and Rebates Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Election Policy and Rules</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Membership Policy</a></li>
+            <li><a href="#" class="text-dark text-decoration-none">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Our Office -->
+        <div class="col-md-3">
+          <h6 class="fw-bold">Our Office</h6>
+          <p class="mt-3 mb-1">EPZA Savings and Credit Cooperative Society Ltd</p>
+          <p class="mb-2">Kitengela Kenya - 788</p>
+          <p class="mb-1"><i class="bi bi-telephone"></i> +254 703 424676</p>
+          <p><i class="bi bi-envelope"></i> epzasacco@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</section>
+
+</section>
+
+
+
+
+<button id="backToTop" title="Back to top">^</button>
+
+
+</body>
+
+
+<script>
+  const heroContents = [
+    
+ 
+  {
+  heading: "We have an awesome app to streamline your experience",
+  subtext: "To epitomize your experience, we have developed an app that will help you manage your finances with ease.",
+  buttonText: "Download App",
+  buttonLink: "assets/app-debug.apk",  // direct download link
+  backgroundImage: "url('assets/contact1.jpg')"
+}
+,
+  {
+      heading: "EPZA is a Savings and Credit Cooperative Society",
+      subtext: "We offer Development Loans and Emergency Loans",
+      buttonText: "Learn More",
+      buttonLink: "#servicesLinkHero",
+      backgroundImage: "url('assets/sli2(1).jpg')"
+    },
+    {
+      heading: "It is Time to Make Your Money Work for You",
+      subtext: "Our key objective is to mobilize savings and advance credit to members from their savings",
+      buttonText: "Download App",
+      buttonLink: "assets/app-debug.apk",
+      backgroundImage: "url('assets/sli2(1).jpg')"
+    },
+    {
+      heading: "We Have a Dedicated Team",
+      subtext: "We have a well-structured administration. We are ready to serve you.",
+      buttonText: "Contact Us",
+      buttonLink: "#contactLinkHero",
+      backgroundImage: "url('assets/home2(1).jpg')"
+    }
+  ];
+
+
+  let index = 0;
+  let interval;
+
+  const contentContainer = document.getElementById("homeContent");
+  const homeSection = document.getElementById("homeSection");
+  const heroSection = document.getElementById("heroSection");
+
+  function showHeroContent() {
+    const content = heroContents[index];
+    contentContainer.classList.remove("show");
+
+    setTimeout(() => {
+      contentContainer.innerHTML = `
+        <div class="hero-heading">${content.heading}</div>
+        <div class="hero-subtext">${content.subtext}</div>
+        <a href="${content.buttonLink}" class="hero-button">${content.buttonText}</a>
+      `;
+      heroSection.style.setProperty('--hero-background', content.backgroundImage);
+      contentContainer.classList.add("show");
+    }, 300);
+
+    index = (index + 1) % heroContents.length;
+  }
+
+  function startHeroRotation() {
+    clearInterval(interval);
+    showHeroContent();
+    interval = setInterval(showHeroContent, 6000);
+  }
+
+  const sectionIds = [
+    'homeSection', 'aboutSection', 'servicesSection', 'contactSection',
+    'mediaSection', 'staffSection', 'boardOfDirectorsSection',
+    'supervisoryCommitteeSection', 'educationCommitteeSection',
+    'creditCommitteeSection'
+  ];
+
+  function hideAllSections() {
+    sectionIds.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) section.style.display = 'none';
+    });
+  }
+
+  function showSection(id) {
+    hideAllSections();
+    const section = document.getElementById(id);
+    if (section) {
+      section.style.display = 'block';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (id === 'homeSection') {
+        startHeroRotation();
+      } else {
+        clearInterval(interval);
+      }
+    }
+  }
+
+  const navMap = {
+    homeLink: 'homeSection',
+    aboutLink: 'aboutSection',
+    servicesLink: 'servicesSection',
+    contactLink: 'contactSection',
+    mediaLink: 'mediaSection',
+    staffLink: 'staffSection',
+    boardOfDirectorsLink: 'boardOfDirectorsSection',
+    supervisoryCommitteeLink: 'supervisoryCommitteeSection',
+    educationCommitteeLink: 'educationCommitteeSection',
+    creditCommitteeLink: 'creditCommitteeSection'
+  };
+
+  Object.entries(navMap).forEach(([linkId, sectionId]) => {
+    const link = document.getElementById(linkId);
+    if (link) {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        showSection(sectionId);
+      });
+    }
+  });
+
+  const coreValuesLink = document.getElementById('coreValuesHover');
+  const hoverSection = document.getElementById('coreValuesHoverSection');
+  if (coreValuesLink && hoverSection) {
+    coreValuesLink.addEventListener('mouseenter', () => {
+      hoverSection.style.display = 'block';
+    });
+    coreValuesLink.addEventListener('mouseleave', () => {
+      setTimeout(() => {
+        hoverSection.style.display = 'none';
+      }, 3000);
+    });
+  }
+
+  
+
+
+  document.addEventListener('click', function (e) {
+  if (e.target.matches('.hero-button')) {
+    const href = e.target.getAttribute('href');
+
+    // Allow download for .apk
+    if (href.endsWith('.apk')) {
+      e.target.setAttribute('download', '');
+      return; // Let the browser handle it
+    }
+
+    // Otherwise, intercept internal navigation
+    e.preventDefault();
+    if (href === '#aboutLinkHero') showSection('aboutSection');
+    else if (href === '#servicesLinkHero') showSection('servicesSection');
+    else if (href === '#contactLinkHero') showSection('contactSection');
+  }
+});
+
+  const viewMoreBtn = document.getElementById('viewMoreBtn');
+  if (viewMoreBtn) {
+    viewMoreBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      showSection('servicesSection');
+    });
+  }
+
+  const learnMoreAboutBtn = document.getElementById('learnMoreAboutBtn');
+  if (learnMoreAboutBtn) {
+    learnMoreAboutBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      showSection('aboutSection');
+    });
+  }
+
+  function adjustLayout() {
+  if (window.innerWidth < 768) {
+    // For mobile screens
+    document.body.classList.add("mobile-view");
+  } else {
+    document.body.classList.remove("mobile-view");
+  }
+}
+
+window.addEventListener("resize", adjustLayout);
+window.addEventListener("DOMContentLoaded", adjustLayout);
+
+
+document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    if (navbarCollapse.classList.contains('show')) {
+      new bootstrap.Collapse(navbarCollapse).toggle();
+    }
+  });
+});
+
+
+
+
+const backToTopBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
+});
+
+
+  // Initial display
+  showSection('homeSection');
+</script>
+
+
+
+
+</html>
